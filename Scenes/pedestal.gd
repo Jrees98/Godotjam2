@@ -15,4 +15,6 @@ func _on_body_entered(body):
 	var item = item_name
 	if item not in Global.player_answer_array:
 		Global.player_answer_array += [item_name]
+		Global.item_counter += 1
+		$Label.text = str(Global.item_counter)
 	print(Global.player_answer_array)
