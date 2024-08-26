@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cptxpr2iu7j8"]
+
+[ext_resource type="PackedScene" uid="uid://c143qtevxmo4f" path="res://Scenes/player.tscn" id="1_5ey7x"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_lttvi"]
+[ext_resource type="PackedScene" uid="uid://shrgbkkjcw5c" path="res://Scenes/pedestal.tscn" id="2_p3vrl"]
+[ext_resource type="Texture2D" uid="uid://w4cjkt845end" path="res://Assets/swimsuit.png" id="3_g0b4a"]
+[ext_resource type="Texture2D" uid="uid://cnh8qm2644c2w" path="res://Assets/beachball.png" id="4_obhe3"]
+[ext_resource type="Texture2D" uid="uid://ca3lnauup2gtw" path="res://Assets/coconut.png" id="5_adl58"]
+[ext_resource type="Texture2D" uid="uid://hxc18tcll7cw" path="res://Assets/pineapple.png" id="6_2vfme"]
+[ext_resource type="PackedScene" uid="uid://ddj47yvf4pspe" path="res://Scenes/item_generator.tscn" id="8_68q35"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_lttvi")
+
+[node name="Player" parent="." instance=ExtResource("1_5ey7x")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+
+[node name="Pedestals" type="Node" parent="."]
+
+[node name="SwimSuit" parent="Pedestals" instance=ExtResource("2_p3vrl")]
+position = Vector2(60, 13)
+item_sprite = ExtResource("3_g0b4a")
+item_name = "swimsuit"
+
+[node name="BeachBall" parent="Pedestals" instance=ExtResource("2_p3vrl")]
+position = Vector2(14, 36)
+item_sprite = ExtResource("4_obhe3")
+item_name = "beachball"
+
+[node name="Coconut" parent="Pedestals" instance=ExtResource("2_p3vrl")]
+position = Vector2(-31, 35)
+item_sprite = ExtResource("5_adl58")
+item_name = "coconut"
+
+[node name="Pineapple" parent="Pedestals" instance=ExtResource("2_p3vrl")]
+position = Vector2(-67, 15)
+item_sprite = ExtResource("6_2vfme")
+item_name = "pineapple"
+
+[node name="ItemGenerator" parent="." instance=ExtResource("8_68q35")]
+position = Vector2(-13, -52)
+
+[node name="ItemGenerator2" parent="." instance=ExtResource("8_68q35")]
+position = Vector2(11, -52)
+
+[node name="Check" type="Button" parent="."]
+offset_left = 60.0
+offset_top = -50.0
+offset_right = 115.0
+offset_bottom = -19.0
+text = "Check"
+
+[connection signal="item_touched" from="Pedestals/SwimSuit" to="." method="_on_swim_suit_item_touched"]
+[connection signal="pressed" from="Check" to="." method="_on_check_pressed"]

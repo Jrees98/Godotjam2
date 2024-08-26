@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddj47yvf4pspe"]
+
+[ext_resource type="Script" path="res://Scenes/item_generator.gd" id="1_had6l"]
+[ext_resource type="Texture2D" uid="uid://c7g0kavbc6kbq" path="res://Assets/sand_pedestal.png" id="1_si3j8"]
+
+[node name="ItemGenerator" type="Node2D"]
+script = ExtResource("1_had6l")
+
+[node name="Pedestal" type="Sprite2D" parent="."]
+texture = ExtResource("1_si3j8")
+
+[node name="ItemPosition" type="Marker2D" parent="."]
+position = Vector2(2.08165e-12, -17)
+
+[node name="Item" type="Sprite2D" parent="."]
