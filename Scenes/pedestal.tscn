@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://shrgbkkjcw5c"]
+[gd_scene load_steps=5 format=3 uid="uid://shrgbkkjcw5c"]
 
-[ext_resource type="Texture2D" uid="uid://c7g0kavbc6kbq" path="res://Assets/sand_pedestal.png" id="1_dppey"]
-[ext_resource type="Script" path="res://Scenes/pedestal.gd" id="1_qyxgj"]
+[ext_resource type="Script" path="res://Scripts/pedestal.gd" id="1_qyxgj"]
+[ext_resource type="Texture2D" uid="uid://cpx5anqtfba5c" path="res://Assets/Untitled 2.png" id="2_a6myp"]
+[ext_resource type="FontFile" uid="uid://bb4k6ydi6inda" path="res://Assets/monogram.ttf" id="3_2sr63"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubym5"]
 size = Vector2(17, 18)
@@ -10,22 +11,25 @@ size = Vector2(17, 18)
 script = ExtResource("1_qyxgj")
 
 [node name="PedestalSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_dppey")
+texture = ExtResource("2_a6myp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_ubym5")
 
 [node name="ItemPosition" type="Marker2D" parent="."]
-position = Vector2(0, -17)
+position = Vector2(0, -13)
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -17)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -5.0
-offset_top = -55.0
-offset_right = 35.0
-offset_bottom = -32.0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 37.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_2sr63")
+theme_override_font_sizes/font_size = 16
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://cg2uu2jk5yqgy"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_yc0jn"]
+[ext_resource type="PackedScene" uid="uid://c143qtevxmo4f" path="res://Scenes/player.tscn" id="2_4ydit"]
+[ext_resource type="PackedScene" uid="uid://shrgbkkjcw5c" path="res://Scenes/pedestal.tscn" id="3_qbb08"]
+[ext_resource type="Texture2D" uid="uid://cmaj6j31xdl0j" path="res://Assets/bucket.png" id="4_qo8p0"]
+[ext_resource type="Texture2D" uid="uid://dq80m61fp8anl" path="res://Assets/crab.png" id="5_fw1pg"]
+[ext_resource type="Texture2D" uid="uid://c31i7chidxikj" path="res://Assets/fish.png" id="6_qbadf"]
+[ext_resource type="Texture2D" uid="uid://gmu8ayg2fveb" path="res://Assets/sunscreen.png" id="7_mv0nw"]
+[ext_resource type="Texture2D" uid="uid://bxdrn56uks1hx" path="res://Assets/umbrella.png" id="8_dbpbe"]
+[ext_resource type="Texture2D" uid="uid://bhk336srultl4" path="res://Assets/icecream.png" id="9_layg5"]
+[ext_resource type="PackedScene" uid="uid://ddj47yvf4pspe" path="res://Scenes/item_generator.tscn" id="10_w0qds"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3mv7n"]
+load_path = "res://.godot/imported/swimsuit.png-fe85a6a88e8382d4f9b76514f8ca6e65.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sphm0"]
+load_path = "res://.godot/imported/beachball.png-8a828f9964ac9bd993af6106688a5967.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c4ohw"]
+load_path = "res://.godot/imported/coconut.png-eb1e6140750041e6c2fed291abe6d8cd.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mmrh8"]
+load_path = "res://.godot/imported/pineapple.png-e755e6b11a84e77e61f12e4f6b2d8dc3.ctex"
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_yc0jn")
+
+[node name="Player" parent="." instance=ExtResource("2_4ydit")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+
+[node name="Pedestals" type="Node" parent="."]
+
+[node name="SwimSuit" parent="Pedestals" instance=ExtResource("3_qbb08")]
+position = Vector2(-75, -17)
+item_sprite = SubResource("CompressedTexture2D_3mv7n")
+item_name = "swimsuit"
+
+[node name="BeachBall" parent="Pedestals" instance=ExtResource("3_qbb08")]
+position = Vector2(-71, 15)
+item_sprite = SubResource("CompressedTexture2D_sphm0")
+item_name = "beachball"
+
+[node name="Coconut" parent="Pedestals" instance=ExtResource("3_qbb08")]
+position = Vector2(-59, 40)
+item_sprite = SubResource("CompressedTexture2D_c4ohw")
+item_name = "coconut"
+
+[node name="Pineapple" parent="Pedestals" instance=ExtResource("3_qbb08")]
+position = Vector2(-37, 61)
+item_sprite = SubResource("CompressedTexture2D_mmrh8")
+item_name = "pineapple"
+
+[node name="Bucket" parent="Pedestals" instance=ExtResource("3_qbb08")]
+position = Vector2(-13, 62)
+item_sprite = ExtResource("4_qo8p0")
+item_name = "bucket"
+
+[node name="Crab" parent="Pedestals" instance=ExtResource("3_qbb08")]
+position = Vector2(13, 62)
+item_sprite = ExtResource("5_fw1pg")
+item_name = "crab"
+
+[node name="Fish" parent="Pedestals" instance=ExtResource("3_qbb08")]
+position = Vector2(39, 62)
+item_sprite = ExtResource("6_qbadf")
+item_name = "fish"
+
+[node name="Sunscreen" parent="Pedestals" instance=ExtResource("3_qbb08")]
+position = Vector2(66, 44)
+item_sprite = ExtResource("7_mv0nw")
+item_name = "sunscreen"
+
+[node name="Umbrella" parent="Pedestals" instance=ExtResource("3_qbb08")]
+position = Vector2(92, 21)
+item_sprite = ExtResource("8_dbpbe")
+item_name = "umbrella"
+
+[node name="Icecream" parent="Pedestals" instance=ExtResource("3_qbb08")]
+position = Vector2(97, -13)
+item_sprite = ExtResource("9_layg5")
+item_name = "icecream"
+
+[node name="ItemGenerator" parent="." instance=ExtResource("10_w0qds")]
+position = Vector2(-40, -192)
+
+[node name="ItemGenerator2" parent="." instance=ExtResource("10_w0qds")]
+position = Vector2(1, -190)
+
+[node name="ItemGenerator3" parent="." instance=ExtResource("10_w0qds")]
+position = Vector2(33, -190)
+
+[node name="ItemGenerator4" parent="." instance=ExtResource("10_w0qds")]
+position = Vector2(58, -190)
+
+[node name="Check" type="Button" parent="."]
+offset_left = -141.0
+offset_top = -65.0
+offset_right = -86.0
+offset_bottom = -34.0
+scale = Vector2(0.502692, 0.315819)
+text = "Check"
+
+[node name="Reload" type="Button" parent="."]
+offset_left = -141.0
+offset_top = -78.0
+offset_right = -80.0
+offset_bottom = -47.0
+scale = Vector2(0.361903, 0.378709)
+text = "Reload"
+
+[connection signal="item_touched" from="Pedestals/SwimSuit" to="." method="_on_swim_suit_item_touched"]
+[connection signal="pressed" from="Check" to="." method="_on_check_pressed"]
+[connection signal="pressed" from="Reload" to="." method="_on_reload_pressed"]

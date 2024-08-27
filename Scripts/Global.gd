@@ -9,10 +9,11 @@ var sprite_paths = {
 	"res://Assets/crab.png": "crab",
 	"res://Assets/fish.png": "fish",
 	"res://Assets/icecream.png": "icecream",
-	"res://Assets/sunscreen.png": "sunscreen"
+	"res://Assets/sunscreen.png": "sunscreen",
+	"res://Assets/umbrella.png" : "umbrella",
 }
 
-
+var current_level := 1
 var player_answer_array := []
 var answer_array := []
 
