@@ -1,5 +1,6 @@
 extends Node
 
+var round_number = 1
 var sprite_paths = {
 	"res://Assets/beachball.png": "beachball",
 	"res://Assets/coconut.png": "coconut",
@@ -12,11 +13,17 @@ var sprite_paths = {
 	"res://Assets/sunscreen.png": "sunscreen",
 	"res://Assets/umbrella.png" : "umbrella",
 }
-
+var round_started
+var sound_playback_position : float = 0.0
+var passed : bool
 var current_level := 1
 var player_answer_array := []
 var answer_array := []
 
+var total_time : int
+#difficulty select
+var regular_mode : bool
+var hard_mode : bool
 var item_counter := 0
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://w651e5l5vyt4"]
+
+[ext_resource type="AudioStream" uid="uid://blc7f6r078hgq" path="res://out of order.wav" id="1_vt04t"]
+[ext_resource type="Script" path="res://AudioStreamPlayer2D.gd" id="2_orqtw"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+process_mode = 3
+stream = ExtResource("1_vt04t")
+autoplay = true
+script = ExtResource("2_orqtw")
