@@ -20,11 +20,14 @@ var area_tracker : int
 func _on_p_pressed():
 	print("Hi")
 func _ready():
+	if Global.hard_mode and Global.round_number == 1:
+		hard_mode_dialogue()
+	else:
+		$Player/Camera2D/CanvasLayer.hide()
 	$Level.text = "Level:\n" + str(Global.round_number) + " of 8"
 	hard_mode_position = Vector2(0,-75)
 	area_tracker = 0
 	hard_mode_barrier = false
-	$Player/Camera2D/CanvasLayer.hide()
 	start_level()
 	if Global.regular_mode:
 		$CountDown.text = str(round_times[Global.round_number])
@@ -34,18 +37,25 @@ func _ready():
 	this_round_time = round_times[Global.round_number]
 
 
-
+func hard_mode_dialogue():
+	if Global.round_number < 2:
+		$Player/Camera2D/CanvasLayer.show()
+		$Player/Camera2D/CanvasLayer/ColorRect/monkey_text.text = "So you made it to hard mode!"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("skip_level"):
 		Global.player_answer_array = Global.answer_array
+	pass
+
 
 func _on_swim_suit_item_touched(item):
 	print(item)
 
 func start_level():
-	Global.hard_mode = true
+	Global.item_counter = 0
+	Global.player_answer_array.clear()
+	Global.answer_array.clear()
 	Global.round_started = false
 	$Transition.play("fade_in")
 	Global.sprite_paths = {
@@ -214,3 +224,18 @@ func _on_count_down_timer_timeout():
 func _on_close_pressed():
 	$UI.visible = false
 
+
+var dialogue_counter = 0
+func _on_close_dialogue_pressed():
+	dialogue_counter += 1
+	if dialogue_counter == 1:
+		$Player/Camera2D/CanvasLayer/ColorRect/monkey_text.text = "In hard mode there is no timer. The clock counts up."
+	elif dialogue_counter == 2:
+		$Player/Camera2D/CanvasLayer/ColorRect/monkey_text.text = "Complete all 8 levels as fast as possible."
+	elif dialogue_counter == 3:
+		$Player/Camera2D/CanvasLayer/ColorRect/monkey_text.text = "You are also only allowed to look at the stage once."
+		
+	elif dialogue_counter == 4:
+		$Player/Camera2D/CanvasLayer/ColorRect/monkey_text.text = "Good luck!"
+	elif dialogue_counter == 5:
+		$Player/Camera2D/CanvasLayer.hide()

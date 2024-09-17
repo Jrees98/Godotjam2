@@ -130,7 +130,7 @@ func _on_close_dialogue_pressed():
 	elif dialogue_counter == 7:
 		$Player/Camera2D/CanvasLayer/ColorRect/monkey_text.text = "Click the check button when you are done. This button is also used..."
 	elif dialogue_counter == 8:
-		$Player/Camera2D/CanvasLayer/ColorRect/monkey_text.text = "reset the level if you mess up."
+		$Player/Camera2D/CanvasLayer/ColorRect/monkey_text.text = "to reset the level if you mess up."
 	elif dialogue_counter == 9:
 		$Player/Camera2D/CanvasLayer/ColorRect/monkey_text.text = "Click the check button to start the real game!"
 
@@ -155,4 +155,5 @@ func _on_start_stage_body_entered(body):
 
 func _on_check_pressed():
 	if dialogue_counter >= 8:
+		Global.regular_mode = true
 		get_tree().change_scene_to_file("res://Scenes/levels/main.tscn")

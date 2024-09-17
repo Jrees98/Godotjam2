@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cptxpr2iu7j8"]
+[gd_scene load_steps=36 format=3 uid="uid://cptxpr2iu7j8"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_kh4ds"]
 [ext_resource type="PackedScene" uid="uid://c143qtevxmo4f" path="res://Scenes/player.tscn" id="2_lkmt3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cmaj6j31xdl0j" path="res://Assets/bucket.png" id="4_je2af"]
 [ext_resource type="Texture2D" uid="uid://dq80m61fp8anl" path="res://Assets/crab.png" id="5_erenj"]
 [ext_resource type="Texture2D" uid="uid://c31i7chidxikj" path="res://Assets/fish.png" id="6_vo5l7"]
+[ext_resource type="Texture2D" uid="uid://daehuvmxk3v4y" path="res://Pixel Art Buttons.png" id="7_gn7e8"]
 [ext_resource type="Texture2D" uid="uid://gmu8ayg2fveb" path="res://Assets/sunscreen.png" id="7_nte0n"]
 [ext_resource type="Texture2D" uid="uid://bxdrn56uks1hx" path="res://Assets/umbrella.png" id="8_78hcx"]
 [ext_resource type="Texture2D" uid="uid://bhk336srultl4" path="res://Assets/icecream.png" id="9_uppwy"]
@@ -13,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://dd7qf5hfm7pjk" path="res://Untitled 34.png" id="14_olqmq"]
 [ext_resource type="PackedScene" uid="uid://5v7gyxu58wm6" path="res://Scenes/map.tscn" id="16_vdieh"]
 [ext_resource type="FontFile" uid="uid://bb4k6ydi6inda" path="res://Assets/monogram.ttf" id="20_fb58k"]
-[ext_resource type="Texture2D" uid="uid://roebrgu2ff1o" path="res://Assets/Base Character - Free/idle.png" id="24_dv0ea"]
 [ext_resource type="Texture2D" uid="uid://dxafynykid1iy" path="res://Untitled 31.png" id="26_0ar2x"]
 [ext_resource type="Texture2D" uid="uid://bvdx8yjtx0xw5" path="res://Assets/Untitled 29.png" id="26_egibt"]
 
@@ -39,6 +39,20 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q47h5"]
+texture = ExtResource("7_gn7e8")
+region_rect = Rect2(70, 195, 54, 50)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1j05k"]
+texture = ExtResource("7_gn7e8")
+region_rect = Rect2(134, 195, 54, 50)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_figjn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fko0s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sx4ix"]
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3mv7n"]
 load_path = "res://.godot/imported/swimsuit.png-fe85a6a88e8382d4f9b76514f8ca6e65.ctex"
 
@@ -54,40 +68,26 @@ load_path = "res://.godot/imported/pineapple.png-e755e6b11a84e77e61f12e4f6b2d8dc
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0csj"]
 size = Vector2(392, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5kgtu"]
-atlas = ExtResource("24_dv0ea")
-region = Rect2(0, 160, 80, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m7ih"]
+atlas = ExtResource("26_egibt")
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ol72r"]
-atlas = ExtResource("24_dv0ea")
-region = Rect2(80, 160, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ehh1l"]
-atlas = ExtResource("24_dv0ea")
-region = Rect2(160, 160, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sgnld"]
-atlas = ExtResource("24_dv0ea")
-region = Rect2(240, 160, 80, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lohe7"]
+atlas = ExtResource("26_egibt")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hcavp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5kgtu")
+"texture": SubResource("AtlasTexture_0m7ih")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ol72r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ehh1l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sgnld")
+"texture": SubResource("AtlasTexture_lohe7")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="Animation" id="Animation_pdfly"]
@@ -244,6 +244,18 @@ theme_override_font_sizes/font_size = 32
 text = "You got the correct order! You are on round 2 of 8."
 autowrap_mode = 2
 
+[node name="CloseDialogue" type="Button" parent="Player/Camera2D/CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 47.0
+offset_right = 435.0
+offset_bottom = 80.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_q47h5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1j05k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_figjn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fko0s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sx4ix")
+
 [node name="Pedestals" type="Node" parent="."]
 
 [node name="SwimSuit" parent="Pedestals" instance=ExtResource("3_ndu62")]
@@ -354,7 +366,7 @@ shape = SubResource("RectangleShape2D_j0csj")
 
 [node name="Tikihut" type="Sprite2D" parent="."]
 z_index = 8
-position = Vector2(-114, -135)
+position = Vector2(-112, -121)
 texture = ExtResource("14_olqmq")
 
 [node name="Tikihut keeper" type="AnimatedSprite2D" parent="Tikihut"]
@@ -362,6 +374,8 @@ z_index = 9
 position = Vector2(0, 6)
 sprite_frames = SubResource("SpriteFrames_hcavp")
 autoplay = "default"
+frame = 1
+frame_progress = 0.920002
 
 [node name="Transition" type="AnimationPlayer" parent="."]
 libraries = {
@@ -380,6 +394,7 @@ color = Color(0, 0, 0, 1)
 [node name="map" parent="." instance=ExtResource("16_vdieh")]
 
 [connection signal="pressed" from="UI/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Player/Camera2D/CanvasLayer/ColorRect/CloseDialogue" to="." method="_on_close_dialogue_pressed"]
 [connection signal="item_touched" from="Pedestals/SwimSuit" to="." method="_on_swim_suit_item_touched"]
 [connection signal="pressed" from="Check" to="." method="_on_check_pressed"]
 [connection signal="pressed" from="Reload" to="." method="_on_reload_pressed"]

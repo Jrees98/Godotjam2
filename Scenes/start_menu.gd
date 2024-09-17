@@ -19,6 +19,7 @@ func _on_regular_pressed():
 
 func _on_difficult_pressed():
 	if Global.passed:
+		Global.round_number = 1
 		Global.answer_array.clear()
 		Global.player_answer_array.clear()
 		Global.hard_mode = true
@@ -30,8 +31,10 @@ func _on_difficult_pressed():
 
 
 func _on_difficult_mouse_entered():
-	$hm.show()
+	if Global.passed != true:
+		$hm.show()
 
 
 func _on_difficult_mouse_exited():
-	$hm.hide()
+	if Global.passed != true:
+		$hm.hide()
